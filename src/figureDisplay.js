@@ -11,7 +11,9 @@ export default function FigureDisplay(props) {
                 height="300"
                 width="auto"
             />
-            <figcaption className="title">{props.imageTitle}</figcaption>
+            <figcaption className="title">
+                <i>{props.imageTitle}</i>, {props.artist}
+            </figcaption>
         </figure>
     )
 }

@@ -9,19 +9,19 @@ export default function ArtworksList(props) {
     for (let index = 0; index < props.artworks.length; index++) {
         const artworkId = props.identifier;
         const imageId = props.artworks[index][`${artworkId}`];
-
-        const title = props.title;
-        const imageTitle = props.artworks[index].title;
+        const imageTitle = props.artworks[index][props.title];
+        const artist = props.artworks[index][props.artist];
         const imageIndex = index;
 
         if (imageId !== null) {
-            const imageURL = `${props.institutionURL}${imageId}/full/!800,800/0/default.jpg`;
+            const imageURL = `${props.institutionURL}${imageId}/full/843,/0/default.jpg`;
 
             imagesList.push(
                 <FigureDisplay
                     key={imageIndex}
                     imageSrc={imageURL}
                     imageTitle={imageTitle === '' ? "Untitled" : imageTitle}
+                    artist={props.artist === '_primaryMaker' ? artist.name : artist}
                     loading={imageIndex < 7 ? "eager" : "lazy"}
                 />
             );
