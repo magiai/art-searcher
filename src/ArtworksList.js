@@ -22,7 +22,7 @@ export default function ArtworksList(props) {
                     imageSrc={imageURL}
                     imageTitle={imageTitle === '' ? "Untitled" : imageTitle}
                     artist={props.artist === '_primaryMaker' ? artist.name : artist}
-                    loading={imageIndex < 7 ? "eager" : "lazy"}
+                    loading={imageIndex && props.isOpen === true < 7 ? "eager" : "lazy"}
                 />
             );
         }

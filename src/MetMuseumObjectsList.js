@@ -1,5 +1,5 @@
 import React from "react";
-import UseFetch from "./breeds";
+import UseFetch from "./fetchData";
 import FigureDisplay from "./figureDisplay";
 import MuseumSectionDisplay from "./MuseumSectionDisplay";
 

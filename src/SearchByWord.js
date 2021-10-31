@@ -21,7 +21,7 @@ export default function SearchByWork() {
     return (
         <React.Fragment>
             <form onSubmit={submitPhrase}>
-                <input type="search" name="subject" value={searchedSubject.subject || ''} onChange={watchTypedPhrase}/>
+                <input type="search" name="subject" placeholder="owl" value={searchedSubject.subject || ''} onChange={watchTypedPhrase}/>
             </form>
             <ApiResults searchedSubject={searchedSubject.subject} />
         </React.Fragment>

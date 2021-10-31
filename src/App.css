@@ -2,13 +2,17 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-color: white;
+  background-color: black;
+  color: white;
 }
 
 img {
-  transition:all 0.2s ease;
-  margin: 5px;
+ 
 }
 
 #root {
@@ -22,14 +26,22 @@ img {
 #root, #root div {
   display: flex;
   flex-wrap: wrap;
-  /*justify-content: center;*/
+  align-items: center;
 }
 
-/*details > div*/
+h1, form {
+  display: inline-block;
+}
 
-h1, h2 {
-  /*text-align: center;*/
-  color: black;
+h1 {
+  font-size: 40px;
+}
+
+form input {
+  height: 60px;
+  font-size: 30px;
+  padding: 10px;
+  margin-left: 20px;
 }
 
 h2 {
@@ -38,19 +50,29 @@ h2 {
   margin-block-end: 0;
 }
 
+.images__list {
+  /* position: relative; */
+}
+
 figure {
   text-align: center;
-  /*background-color: white;*/
-  /*padding: 15px;*/
-  /*border: 30px solid black;*/
+  transition:all 0.2s ease;
+}
+
+figure:hover {
+  /* position: absolute; */
+  /* inset: 50%; */
 }
 
 figcaption {
-  color: black;
-  margin-top: 5px;
+  max-width: 300px;
+  margin: auto;
 }
 
+
 img {
+  transition:all 0.2s ease;
+  margin: 5px;
   width: auto !important;
   max-width: 70vw;
   z-index: 1;
@@ -59,10 +81,16 @@ img {
 #root img:hover {
   outline: 1rem solid white;
   -webkit-transform:scale(2);
+  /* transform: translate(50%); */
 }
 
-section {
-  /*content-visibility: auto;*/
+details {
+  width: 100%;
+}
+
+details div {
+   justify-content: center;
+
 }
 
 summary {

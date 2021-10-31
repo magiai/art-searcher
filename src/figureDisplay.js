@@ -9,7 +9,7 @@ export default function FigureDisplay(props) {
                 alt={props.imageTitle}
                 loading={props.loading}
                 height="300"
-                width="auto"
+                width="300"
             />
             <figcaption className="title">
                 <i>{props.imageTitle}</i>, {props.artist}
