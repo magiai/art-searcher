@@ -8,13 +8,13 @@ export default function UseFetch(url, defaultData) {
     // this seems to break the React observable
     // also don't call the URL argument on useEffect either
     useEffect(() => {
-
+      
       async function getDataFromAPI() {
         try {
-            if (!url) {
-                updateData(defaultData);
-                return;
-            }
+            // if (!url) {
+            //     updateData(defaultData);
+            //     return;
+            // }
             const response = await fetch(url);
             const json = await response.json();
             updateData(json);

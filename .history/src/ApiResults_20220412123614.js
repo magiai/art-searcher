@@ -1,11 +1,12 @@
 import React from "react";
 import UseFetch from "./fetchData";
-import ArtworksList from "./ArtworksList";
+// import ArtworksList from "./ArtworksList";
 // import SmithsonianArtworksList from "./SmithsonianArtworksList";
 import { apiUrlInformationForInstitutons } from "./apiInformationForInstitutons";
 // import ArtworkMetMuseum from "./MetMuseumObjectsList";
 
 export default function ApiResults(props) {
+  // console.log(props)
 
   // let tryIt = {};
   // const [returnedArtworks, setReturnedArtworks] = useState({});
@@ -26,7 +27,9 @@ export default function ApiResults(props) {
   // };
 
   const apiUrlInformationForInstitutonsArray = Object.values(apiUrlInformationForInstitutons);
-  let artworks;
+  // let artworks;
+
+  // console.log(apiUrlInformationForInstitutonsArray);
 
   for (let index = 0; index < apiUrlInformationForInstitutonsArray.length; index++) {
 
@@ -37,8 +40,11 @@ export default function ApiResults(props) {
     const secondParameter = apiUrlInformationForInstitutonsArray[index].secondResponseParameter;
 
     if (secondParameter === null) {
-      const initialData = UseFetch(mainURL, {[initialResponseName]: []});
-      initialData !== undefined ? artworks = initialData[initialResponseName] : artworks = '';
+      // console.log(mainURL);
+      // console.log(initialResponseName);
+      const initialData = UseFetch(mainURL, {data: []});
+      // console.log(initialData);
+      // initialData !== undefined ? artworks = initialData.data : artworks = '';
       // console.log(artworks);
       // updateResult(artworks);
       // setReturnedArtworks(artworks);
@@ -49,16 +55,19 @@ export default function ApiResults(props) {
       const firstResponse = initialData[initialResponseName];
 
       if (firstResponse !== undefined) {
-        artworks = initialData[initialResponseName][secondParameter];
+        // artworks = initialData[initialResponseName][secondParameter];
         // setReturnedArtworks(artworks);
         // updateResult(artworks);
+        // console.log('halo2');
       }
     }
   }
 
   return (
-    <ArtworksList
-       artworks = { artworks }
-   />
+    <h1>Halko</h1>
+    // <ArtworksList
+  //     //  key = {index} 
+  //      artworks = {returnedArtworks || ''}
+  //  />
   )
 }

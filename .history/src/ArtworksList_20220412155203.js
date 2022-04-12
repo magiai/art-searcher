@@ -6,12 +6,13 @@ import MuseumSectionDisplay from "./MuseumSectionDisplay";
 export default function ArtworksList(props) {
 
     const imagesList = [];
-    let sectionTitle, 
+    let keyWordForSectionTitle, 
         keyWordForImageTitle, 
         keyWordForArtist, 
         imageUrl,
         keyWordForIdentifier = '';
-    let imageTitle, 
+    let sectionTitle, 
+        imageTitle, 
         artist, 
         imagePath, 
         identifier = '';
@@ -25,7 +26,7 @@ export default function ArtworksList(props) {
     keyWordForArtist = apiGeneralInformationArray[0].artist;
     imageUrl = apiGeneralInformationArray[0].imagesUrl;
     keyWordForIdentifier = apiGeneralInformationArray[0].identifier; 
-    sectionTitle = apiGeneralInformationArray[0].sectionTitle;
+    keyWordForSectionTitle = apiGeneralInformationArray[0].sectionTitle;
     isOpen = apiGeneralInformationArray[0].isOpen; 
 
     for (let index = 0; index < props.artworks.length; index++) {

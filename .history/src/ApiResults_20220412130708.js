@@ -6,6 +6,7 @@ import { apiUrlInformationForInstitutons } from "./apiInformationForInstitutons"
 // import ArtworkMetMuseum from "./MetMuseumObjectsList";
 
 export default function ApiResults(props) {
+  // console.log(props)
 
   // let tryIt = {};
   // const [returnedArtworks, setReturnedArtworks] = useState({});
@@ -37,8 +38,8 @@ export default function ApiResults(props) {
     const secondParameter = apiUrlInformationForInstitutonsArray[index].secondResponseParameter;
 
     if (secondParameter === null) {
-      const initialData = UseFetch(mainURL, {[initialResponseName]: []});
-      initialData !== undefined ? artworks = initialData[initialResponseName] : artworks = '';
+      const initialData = UseFetch(mainURL, {data: []});
+      initialData !== undefined ? artworks = initialData.data : artworks = '';
       // console.log(artworks);
       // updateResult(artworks);
       // setReturnedArtworks(artworks);
@@ -49,7 +50,7 @@ export default function ApiResults(props) {
       const firstResponse = initialData[initialResponseName];
 
       if (firstResponse !== undefined) {
-        artworks = initialData[initialResponseName][secondParameter];
+        // artworks = initialData[initialResponseName][secondParameter];
         // setReturnedArtworks(artworks);
         // updateResult(artworks);
       }

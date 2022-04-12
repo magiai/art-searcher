@@ -6,6 +6,7 @@ import { apiUrlInformationForInstitutons } from "./apiInformationForInstitutons"
 // import ArtworkMetMuseum from "./MetMuseumObjectsList";
 
 export default function ApiResults(props) {
+  // console.log(props)
 
   // let tryIt = {};
   // const [returnedArtworks, setReturnedArtworks] = useState({});

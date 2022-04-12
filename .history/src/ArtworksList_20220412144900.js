@@ -6,47 +6,59 @@ import MuseumSectionDisplay from "./MuseumSectionDisplay";
 export default function ArtworksList(props) {
 
     const imagesList = [];
-    let sectionTitle, 
+    let keyWordForSectionTitle, 
         keyWordForImageTitle, 
         keyWordForArtist, 
-        imageUrl,
+        keyWordForImageUrl,
         keyWordForIdentifier = '';
-    let imageTitle, 
+    let sectionTitle, 
+        imageTitle, 
         artist, 
+        imageUrl, 
         imagePath, 
         identifier = '';
     let isOpen = false;
     let imageId = null;
     const apiGeneralInformationArray = Object.values(apiGeneralInformationForInstitutons);
 
-    // console.log(apiGeneralInformationForInstitutons);
-
     keyWordForImageTitle = apiGeneralInformationArray[0].artworkTitle;
     keyWordForArtist = apiGeneralInformationArray[0].artist;
-    imageUrl = apiGeneralInformationArray[0].imagesUrl;
+    keyWordForImageUrl = apiGeneralInformationArray[0].imagesUrl;
     keyWordForIdentifier = apiGeneralInformationArray[0].identifier; 
-    sectionTitle = apiGeneralInformationArray[0].sectionTitle;
+    keyWordForSectionTitle = apiGeneralInformationArray[0].sectionTitle;
     isOpen = apiGeneralInformationArray[0].isOpen; 
+
+    console.log(apiGeneralInformationArray[0]);
+    console.log(keyWordForImageTitle, keyWordForArtist, keyWordForImageUrl, keyWordForIdentifier, keyWordForSectionTitle, isOpen);
+
 
     for (let index = 0; index < props.artworks.length; index++) {
 
       const artworks = props.artworks[index];
+      // console.log(artworks);
+        // const artworkId = props.identifier;
 
         if (artworks !== undefined) {
+          // console.log(apiGeneralInformationArray[index].artworkTitle);
 
           imageTitle = artworks[keyWordForImageTitle];
           artist = artworks[keyWordForArtist];
-          identifier = artworks[keyWordForIdentifier]; 
+        //   imageUrl = keyWordForImageUrl;
+        //   identifier = apiGeneralInformationArray[index].identifier; 
+        //   sectionTitle = apiGeneralInformationArray[index].sectionTitle;
+        //   isOpen = apiGeneralInformationArray[index].isOpen; 
 
-          if (identifier !== null) {
-            imageId = props.artworks[index][`${identifier}`];
+          if (keyWordForIdentifier !== null) {
+            imageId = props.artworks[index][`${keyWordForIdentifier}`];
           }
           if (imageId !== null) {
-            imagePath = `${imageUrl}${identifier}/full/843,/0/default.jpg`;
+            imagePath = `${keyWordForImageUrl}${keyWordForIdentifier}/full/843,/0/default.jpg`;
           } else {
-            imagePath = imageUrl;
+            imagePath = keyWordForImageUrl;
           }
 
+          // console.log(imagePath);
+          
           imagesList.push(
             <FigureDisplay
                 key={index}
@@ -57,6 +69,17 @@ export default function ArtworksList(props) {
             />
           );
         }
+   
+        // const imageTitle = props.artworks[index][props.title];
+        // const artist = props.artworks[index][props.artist];
+
+        // if (imageId !== null) {
+            // const imageURL = `${props.institutionURL}${imageId}/full/843,/0/default.jpg`;
+            // const imageURL = `${imagesUrl}${imageId}/full/843,/0/default.jpg`;
+
+
+  
+        // }
       }
 
       return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import UseFetch from "./fetchData";
 import ArtworksList from "./ArtworksList";
 // import SmithsonianArtworksList from "./SmithsonianArtworksList";
@@ -28,6 +28,8 @@ export default function ApiResults(props) {
   const apiUrlInformationForInstitutonsArray = Object.values(apiUrlInformationForInstitutons);
   let artworks;
 
+  // console.log(apiUrlInformationForInstitutonsArray);
+
   for (let index = 0; index < apiUrlInformationForInstitutonsArray.length; index++) {
 
     const urlStart = apiUrlInformationForInstitutonsArray[index].urlStart;
@@ -37,9 +39,10 @@ export default function ApiResults(props) {
     const secondParameter = apiUrlInformationForInstitutonsArray[index].secondResponseParameter;
 
     if (secondParameter === null) {
-      const initialData = UseFetch(mainURL, {[initialResponseName]: []});
-      initialData !== undefined ? artworks = initialData[initialResponseName] : artworks = '';
-      // console.log(artworks);
+      console.log(initialResponseName);
+      const initialData = UseFetch(mainURL, {initialResponseName: []});
+      console.log(initialData);
+      initialData !== undefined ? artworks = initialData.initialResponseName : artworks = '';
       // updateResult(artworks);
       // setReturnedArtworks(artworks);
     } 
@@ -52,13 +55,15 @@ export default function ApiResults(props) {
         artworks = initialData[initialResponseName][secondParameter];
         // setReturnedArtworks(artworks);
         // updateResult(artworks);
+        // console.log('halo2');
       }
     }
   }
 
   return (
     <ArtworksList
-       artworks = { artworks }
+  //     //  key = {index} 
+  //      artworks = {returnedArtworks || ''}
    />
   )
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import UseFetch from "./fetchData";
 import ArtworksList from "./ArtworksList";
 // import SmithsonianArtworksList from "./SmithsonianArtworksList";
@@ -8,7 +8,7 @@ import { apiUrlInformationForInstitutons } from "./apiInformationForInstitutons"
 export default function ApiResults(props) {
 
   // let tryIt = {};
-  // const [returnedArtworks, setReturnedArtworks] = useState({});
+  const [returnedArtworks, setReturnedArtworks] = useState({});
 
   // const updateResult = (tryIt = {}) => {
   //     const { value } = tryIt;
@@ -19,7 +19,7 @@ export default function ApiResults(props) {
   //     }));
   // };
 
-  // console.log(returnedArtworks);
+  console.log(returnedArtworks);
 
   // const submitPhrase = (event) => {
   //     event.preventDefault();
@@ -27,6 +27,8 @@ export default function ApiResults(props) {
 
   const apiUrlInformationForInstitutonsArray = Object.values(apiUrlInformationForInstitutons);
   let artworks;
+
+  // console.log(apiUrlInformationForInstitutonsArray);
 
   for (let index = 0; index < apiUrlInformationForInstitutonsArray.length; index++) {
 
@@ -37,11 +39,12 @@ export default function ApiResults(props) {
     const secondParameter = apiUrlInformationForInstitutonsArray[index].secondResponseParameter;
 
     if (secondParameter === null) {
-      const initialData = UseFetch(mainURL, {[initialResponseName]: []});
-      initialData !== undefined ? artworks = initialData[initialResponseName] : artworks = '';
-      // console.log(artworks);
-      // updateResult(artworks);
-      // setReturnedArtworks(artworks);
+      console.log(initialResponseName);
+      const initialData = UseFetch(mainURL, {initialResponseName: []});
+      console.log(initialData);
+      initialData !== undefined ? artworks = initialData.initialResponseName : artworks = '';
+      updateResult(artworks);
+      setReturnedArtworks(artworks);
     } 
 
     else {
@@ -50,15 +53,17 @@ export default function ApiResults(props) {
 
       if (firstResponse !== undefined) {
         artworks = initialData[initialResponseName][secondParameter];
-        // setReturnedArtworks(artworks);
+        setReturnedArtworks(artworks);
         // updateResult(artworks);
+        // console.log('halo2');
       }
     }
   }
 
   return (
     <ArtworksList
-       artworks = { artworks }
+      //  key = {index} 
+       artworks = {returnedArtworks || ''}
    />
   )
 }

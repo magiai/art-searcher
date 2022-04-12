@@ -6,31 +6,36 @@ import MuseumSectionDisplay from "./MuseumSectionDisplay";
 export default function ArtworksList(props) {
 
     const imagesList = [];
-    let sectionTitle, 
+    let keyWordForSectionTitle, 
         keyWordForImageTitle, 
         keyWordForArtist, 
         imageUrl,
         keyWordForIdentifier = '';
-    let imageTitle, 
+    let sectionTitle, 
+        imageTitle, 
         artist, 
         imagePath, 
         identifier = '';
     let isOpen = false;
     let imageId = null;
     const apiGeneralInformationArray = Object.values(apiGeneralInformationForInstitutons);
-
-    // console.log(apiGeneralInformationForInstitutons);
+    console.log(apiGeneralInformationArray);
 
     keyWordForImageTitle = apiGeneralInformationArray[0].artworkTitle;
     keyWordForArtist = apiGeneralInformationArray[0].artist;
     imageUrl = apiGeneralInformationArray[0].imagesUrl;
     keyWordForIdentifier = apiGeneralInformationArray[0].identifier; 
-    sectionTitle = apiGeneralInformationArray[0].sectionTitle;
+    keyWordForSectionTitle = apiGeneralInformationArray[0].sectionTitle;
     isOpen = apiGeneralInformationArray[0].isOpen; 
+
+    // console.log(apiGeneralInformationArray[0]);
+    // console.log(keyWordForImageTitle, keyWordForArtist, keyWordForImageUrl, keyWordForIdentifier, keyWordForSectionTitle, isOpen);
+
 
     for (let index = 0; index < props.artworks.length; index++) {
 
       const artworks = props.artworks[index];
+    //   console.log(artworks);
 
         if (artworks !== undefined) {
 
@@ -47,6 +52,8 @@ export default function ArtworksList(props) {
             imagePath = imageUrl;
           }
 
+          // console.log(imagePath);
+          
           imagesList.push(
             <FigureDisplay
                 key={index}
@@ -57,6 +64,17 @@ export default function ArtworksList(props) {
             />
           );
         }
+   
+        // const imageTitle = props.artworks[index][props.title];
+        // const artist = props.artworks[index][props.artist];
+
+        // if (imageId !== null) {
+            // const imageURL = `${props.institutionURL}${imageId}/full/843,/0/default.jpg`;
+            // const imageURL = `${imagesUrl}${imageId}/full/843,/0/default.jpg`;
+
+
+  
+        // }
       }
 
       return (
